@@ -725,7 +725,7 @@ cdef class PureMarketMakingStrategy(StrategyBase):
             top_bid_price
         )
         # Get the price above the top bid
-        price_above_bid = (ceil(top_bid_price / price_quantum) + 1) * price_quantum
+        price_above_bid = (ceil(top_bid_price / price_quantum) - 1) * price_quantum
 
         # If the price_above_bid is lower than the price suggested by the pricing proposal,
         # lower your price to this
@@ -740,7 +740,7 @@ cdef class PureMarketMakingStrategy(StrategyBase):
             top_ask_price
         )
         # Get the price below the top ask
-        price_below_ask = (floor(top_ask_price / price_quantum) - 1) * price_quantum
+        price_below_ask = (floor(top_ask_price / price_quantum) + 1) * price_quantum
 
         # If the price_below_ask is higher than the price suggested by the pricing proposal,
         # increase your price to this
