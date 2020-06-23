@@ -726,7 +726,7 @@ cdef class PureMarketMakingStrategy(StrategyBase):
   #      bid_vol = self._market_info.get_volume_for_price(
   #          False, proposal.buys[0].price).result_volume
   #      self._bid_order_optimization_depth = self._bid_order_optimization_depth + bid_vol
-        
+  #        
   #      ask_vol = self._market_info.get_volume_for_price(
   #          True, proposal.sells[0].price).result_volume
   #      self._ask_order_optimization_depth = self._ask_order_optimization_depth + ask_vol
