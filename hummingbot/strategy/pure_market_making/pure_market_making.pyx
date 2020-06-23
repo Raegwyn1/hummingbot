@@ -720,6 +720,18 @@ cdef class PureMarketMakingStrategy(StrategyBase):
                 own_sell_size = order.quantity
 
         # Get the top bid price in the market using order_optimization_depth and your buy order volume
+        
+        ####
+        
+        bid_vol = self._market_info.get_volume_for_price(
+            False, proposal.buys[0].price).result_volume
+        self._bid_order_optimization_depth = self._bid_order_optimization_depth + bid_vol
+        
+        ask_vol = self._market_info.get_volume_for_price(
+            True, proposal.sells[0].price).result_volume
+        self._ask_order_optimization_depth = self._ask_order_optimization_depth + ask_vol
+        
+        ####
         top_bid_price = self._market_info.get_price_for_volume(
             False, self._bid_order_optimization_depth + own_buy_size).result_price
         price_quantum = market.c_get_order_price_quantum(
